@@ -1,0 +1,13 @@
+<div class="page-header"><h1>📊 Dashboard</h1><p class="subtitle">Query history and analysis statistics</p></div>
+<div class="stats-grid">
+<div class="stat-card"><div class="stat-value">{{stats.total_queries}}</div><div class="stat-label">Queries Analyzed</div></div>
+<div class="stat-card"><div class="stat-value">{{stats.total_tokens}}</div><div class="stat-label">Tokens Used</div></div>
+</div>
+<div class="card"><h3>Recent Analyses</h3>
+<table class="styled-table"><thead><tr><th>ID</th><th>Query</th><th>Complexity</th><th>Findings</th><th>Tokens</th><th>Time</th></tr></thead>
+<tbody>{{#each queries}}<tr class="clickable" onclick="location.href='/results/{{this.id}}'">
+<td>#{{this.id}}</td><td><code>{{this.sql_text}}</code></td>
+<td><span class="badge badge-{{this.complexity}}">{{this.complexity}}</span></td>
+<td>{{this.findings}}</td><td>{{this.tokens_used}}</td><td>{{this.analysis_time_ms}}ms</td>
+</tr>{{/each}}</tbody></table>
+</div>

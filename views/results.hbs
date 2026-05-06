@@ -1,0 +1,22 @@
+<div class="breadcrumb"><a href="/dashboard">← Dashboard</a></div>
+<div class="page-header"><h1>⚡ Analysis Results — Query #{{query.id}}</h1>
+<div class="meta"><span class="badge badge-{{query.complexity}}">{{query.complexity}}</span>
+<span>{{query.tokens_used}} tokens</span><span>{{query.analysis_time_ms}}ms</span></div></div>
+
+<div class="card"><h3>📝 Original Query</h3><pre><code>{{query.sql_text}}</code></pre></div>
+
+<div id="explain-tree" class="card"><h3>📊 Explain Plan Visualization</h3><div id="tree-container"></div></div>
+
+<div class="card"><h3>🔧 Recommendations ({{recommendations.length}})</h3>
+{{#each recommendations}}
+<div class="recommendation severity-{{this.impact}}">
+<div class="rec-header"><span class="impact-badge">{{this.impact}}</span><span class="type-badge">{{this.type}}</span><strong>{{this.title}}</strong></div>
+<p>{{this.description}}</p>
+{{#if this.sql_suggestion}}<div class="sql-suggestion"><strong>Suggested:</strong><pre><code>{{this.sql_suggestion}}</code></pre></div>{{/if}}
+</div>
+{{/each}}
+</div>
+
+<div class="card"><h3>📡 API Access</h3>
+<pre><code>curl -X POST http://localhost:4000/api/analyze -H "Content-Type: application/json" -d '{"sql": "{{query.sql_text}}"}'</code></pre>
+</div>

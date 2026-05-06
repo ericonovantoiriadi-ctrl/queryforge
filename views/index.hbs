@@ -1,0 +1,17 @@
+<div class="page-header"><h1>🔍 SQL Query Optimizer</h1><p class="subtitle">Paste your SQL query — get AI-powered optimization suggestions and explain plan analysis</p></div>
+<div class="card">
+<form id="analyze-form">
+<div class="form-group"><label>Dialect</label>
+<select id="dialect" class="input"><option value="postgresql">PostgreSQL</option><option value="mysql">MySQL</option><option value="sqlite">SQLite</option><option value="sqlserver">SQL Server</option></select></div>
+<div class="form-group"><label>SQL Query</label>
+<textarea id="sql-input" rows="12" class="input mono" placeholder="SELECT u.name, COUNT(o.id) as order_count\nFROM users u\nLEFT JOIN orders o ON o.user_id = u.id\nWHERE u.created_at > '2026-01-01'\nGROUP BY u.id\nORDER BY order_count DESC\nLIMIT 10;" required></textarea></div>
+<button type="submit" class="btn btn-primary btn-lg">⚡ Analyze Query</button>
+</form>
+<div id="loading" style="display:none" class="loading">⏳ Analyzing with MiMo v2.5...</div>
+</div>
+<div class="features-grid">
+<div class="feature"><span>📊</span><h4>Explain Plan</h4><p>Visual execution plan tree</p></div>
+<div class="feature"><span>🔧</span><h4>Optimization</h4><p>Query rewrite suggestions</p></div>
+<div class="feature"><span>📇</span><h4>Index Advisor</h4><p>Missing index detection</p></div>
+<div class="feature"><span>🐛</span><h4>Bug Detection</h4><p>N+1, cartesian, type mismatches</p></div>
+</div>
