@@ -1,0 +1,9 @@
+version: "3.9"
+services:
+  queryforge:
+    build: .
+    ports: ["4000:4000"]
+    environment: [MIMO_API_KEY=${MIMO_API_KEY}]
+    volumes: [qf-data:/app/data]
+volumes:
+  qf-data:
